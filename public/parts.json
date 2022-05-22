@@ -1,0 +1,56 @@
+[
+  {
+    "_id": 1,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  },
+  {
+    "_id": 2,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  },
+  {
+    "_id": 3,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  },
+  {
+    "_id": 4,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  },
+  {
+    "_id": 5,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  },
+  {
+    "_id": 6,
+    "name": "Conditionars",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
+    "price": 120,
+    "quantity": 200,
+    "minOrderQty": 20,
+    "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+  }
+]
