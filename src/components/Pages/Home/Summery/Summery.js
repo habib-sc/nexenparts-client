@@ -7,7 +7,7 @@ import orders from '../../../../assets/icons/trade.png';
 const Summery = () => {
     return (
         <section class="">
-            <div class="container px-4 pb-24 mx-auto">
+            <div class="container px-4 mx-auto">
                 <div class="flex flex-col text-center w-full mb-10">
                     <h1 class="text-center text-3xl font-bold mb-2 uppercase">Obtained Trust World Wide</h1>
                     <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Our first priority is making happy all the customers</p>
