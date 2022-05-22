@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import { publicRoutes } from './routes/publicRoutes';
 
@@ -12,6 +13,7 @@ function App() {
           publicRoutes.map((route, index) => <Route key={index} path={route.path} element={<route.Component></route.Component>}></Route>)
         }
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

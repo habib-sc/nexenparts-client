@@ -3,10 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='bg-base-100 fixed top-0 w-full z-40'>
+        <div className='bg-base-100 fixed top-0 w-full z-40 shadow border border-b-gray-100'>
             <div class="container mx-auto px-4 navbar">
                 <div class="flex-1">
-                    <Link to='/' className='btn btn-ghost normal-case text-xl'>Manufacturer</Link>
+                    <Link to='/' className='btn btn-ghost normal-case text-xl'>Nexen Car Parts.</Link>
                 </div>
                 <div class="flex-none">
                     <ul class="menu menu-horizontal p-0">
