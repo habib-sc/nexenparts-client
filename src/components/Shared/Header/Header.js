@@ -11,7 +11,10 @@ const Header = () => {
                 <div class="flex-none">
                     <ul class="menu menu-horizontal p-0">
                         <li className='ml-3'><NavLink to='/'>Home</NavLink></li>
-                        <li className='ml-3'><NavLink to='/about'>about</NavLink></li>  
+                        <li className='ml-3'><NavLink to='/about'>About</NavLink></li>  
+                        <li className='ml-3'><NavLink to='/contact'>Contact</NavLink></li>  
+                        <li className='ml-3'><NavLink to='/login'>Login</NavLink></li>  
+                        <li className='ml-3'><NavLink to='/register'>Register</NavLink></li>  
                     </ul>
                 </div>
             </div>
