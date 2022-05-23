@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -8,6 +8,9 @@ const Dashboard = () => {
                 <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content flex flex-col items-center justify-center">
                     {/* <!-- Page content here --> */}
+                    
+                    <Outlet/>
+
                     <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 
                 </div> 
@@ -15,9 +18,9 @@ const Dashboard = () => {
                     <label for="my-drawer-2" class="drawer-overlay"></label> 
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     
-                        <li className='mb-3'><NavLink to='/dashboard'>Sidebar Item 1</NavLink></li>
-                        <li className='mb-3'><NavLink to='/dashboard'>Sidebar Item 1</NavLink></li>
-                        <li className='mb-3'><NavLink to='/dashboard'>Sidebar Item 1</NavLink></li>
+                        <li className='mb-3'><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
+                        <li className='mb-3'><NavLink to='/dashboard/add-review'>Add A Review</NavLink></li>
+                        <li className='mb-3'><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
                     </ul>
                 
                 </div>
