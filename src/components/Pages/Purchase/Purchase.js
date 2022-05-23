@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
 const Purchase = () => {
@@ -7,6 +8,7 @@ const Purchase = () => {
     const [orderQty, setOrderQty] = useState(0);
     const [qtyError, setQtyError] = useState('');
     const [showDetail, setShowDetail] = useState(false);
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
     
     useEffect( () => {
@@ -87,6 +89,53 @@ const Purchase = () => {
                     </tbody>
                 </table>
             </div>
+
+
+
+            <div className='mx-auto flex flex-col justify-center mt-10'>
+                <div className='rounded-lg border shadow-xl p-5 bg-gray-50'>
+                    <h2 className='text-center text-2xl mt-2 mb-5'>Please Fillup this form</h2>
+                    <form>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                            {/* Name  */}
+                            <input type="text" placeholder="Name"
+                                {...register("name", {required: true })}
+                                className="input input-bordered input-primary w-full mb-3" 
+                            />
+
+                            {/* Email  */}
+                            <input type="email" placeholder="Email"
+                                {...register("email", {required: true, pattern: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i})}
+                                className="input input-bordered input-primary w-full mb-3" 
+                            />
+                            
+                            {/* Phone  */}
+                            <input type="phone" placeholder="Phone"
+                                {...register("phone", {required: true})}
+                                className="input input-bordered input-primary w-full mb-3" 
+                            />    
+                        </div>
+
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                            {/* Address  */}
+                            <input type="text" placeholder="Address"
+                                {...register("address", {required: true })}
+                                className="input input-bordered input-primary w-full mb-3" 
+                            />  
+
+                            <textarea placeholder="Description"
+                                {...register("description")}
+                                className="input input-bordered input-primary w-full mb-3 pt-3" 
+                            />  
+                        </div>
+
+                        <div className='flex justify-center mt-2'>
+                            <button className='btn bg-gradient-to-r from-primary to-secondary text-white border-0 px-8'>Purchase Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
 
             
         </div>
