@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Spinner from '../Shared/Spinner/Spinner';
+import SocialAuth from './SocialAuth';
 
 const Login = () => {
 
@@ -57,6 +58,8 @@ const Login = () => {
                     
                     <p className='mt-2'>New To Nexen Car Parts? <Link to='/register' className='text-primary'>Create New Account</Link></p>
                     <p className=''>Forgot Password? <Link to='/password-reset' className='text-primary'>Reset Now</Link></p>
+
+                    <SocialAuth></SocialAuth>
 
                 </div>
             </div>

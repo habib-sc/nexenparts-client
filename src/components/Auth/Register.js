@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Spinner from '../Shared/Spinner/Spinner';
+import SocialAuth from './SocialAuth';
 
 const Register = () => {
     const [passwordError, setPasswordError] = useState('');
@@ -33,6 +34,10 @@ const Register = () => {
 
     if (loading || updating) {
         return <Spinner></Spinner>
+    }
+
+    if (user){
+        navigate('/');
     }
 
     return (
@@ -81,6 +86,8 @@ const Register = () => {
                     </form>
 
                     <p className='mt-2'>Already have an Account? <Link to='/login' className='text-primary'>Login</Link></p>
+
+                    <SocialAuth></SocialAuth>
                     
                 </div>
             </div>
