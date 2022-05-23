@@ -1,14 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Purchase = () => {
     const [item, setItem] = useState({});
     const [orderQty, setOrderQty] = useState(0);
     const [qtyError, setQtyError] = useState('');
     const [showDetail, setShowDetail] = useState(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [user] = useAuthState(auth);
     const { id } = useParams();
     
     useEffect( () => {
@@ -47,7 +48,28 @@ const Purchase = () => {
         setOrderQty(parseInt(orderQty) + 1);
     };
 
-    console.log(orderQty);
+    // Handle purchase 
+    const handlePurchase = e => {
+        e.preventDefault();
+        const orderedQty = parseInt(orderQty);
+        const totalPrice = orderQty * item.price;
+
+        const order = {
+            itemId: id,
+            itemName: item.name,
+            img: item.img,
+            unitPrice: item.price,
+            orderedQty,
+            totalPrice,
+            name: e.target.name.value,
+            email: e.target.email.value,
+            phone: e.target.phone.value,
+            address: e.target.address.value,
+            description: e.target.description.value
+        };
+
+        console.log(order);
+    }
 
     return (
         <div className='container mx-auto px-4 mt-24'>
@@ -95,38 +117,24 @@ const Purchase = () => {
             <div className='mx-auto flex flex-col justify-center mt-10'>
                 <div className='rounded-lg border shadow-xl p-5 bg-gray-50'>
                     <h2 className='text-center text-2xl mt-2 mb-5'>Please Fillup this form</h2>
-                    <form>
+                    <form onSubmit={handlePurchase}>
                         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                             {/* Name  */}
-                            <input type="text" placeholder="Name"
-                                {...register("name", {required: true })}
-                                className="input input-bordered input-primary w-full mb-3" 
-                            />
+                            <input type="text" name='name' value={user?.displayName} className="input input-bordered input-primary w-full mb-3"/>
 
                             {/* Email  */}
-                            <input type="email" placeholder="Email"
-                                {...register("email", {required: true, pattern: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i})}
-                                className="input input-bordered input-primary w-full mb-3" 
-                            />
+                            <input type="email" name='email' value={user?.email} className="input input-bordered input-primary w-full mb-3" />
                             
                             {/* Phone  */}
-                            <input type="phone" placeholder="Phone"
-                                {...register("phone", {required: true})}
-                                className="input input-bordered input-primary w-full mb-3" 
-                            />    
+                            <input type="text" name='phone' placeholder="Phone" className="input input-bordered input-primary w-full mb-3" />    
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                             {/* Address  */}
-                            <input type="text" placeholder="Address"
-                                {...register("address", {required: true })}
-                                className="input input-bordered input-primary w-full mb-3" 
-                            />  
+                            <input type="text" name='address' placeholder="Address" className="input input-bordered input-primary w-full mb-3" />  
 
-                            <textarea placeholder="Description"
-                                {...register("description")}
-                                className="input input-bordered input-primary w-full mb-3 pt-3" 
-                            />  
+                            {/* Description  */}
+                            <textarea name='description' placeholder="Description" className="input input-bordered input-primary w-full mb-3 pt-3" />  
                         </div>
 
                         <div className='flex justify-center mt-2'>
