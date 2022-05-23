@@ -6,6 +6,7 @@ const Purchase = () => {
     const [item, setItem] = useState({});
     const [orderQty, setOrderQty] = useState(0);
     const [qtyError, setQtyError] = useState('');
+    const [showDetail, setShowDetail] = useState(false);
     const { id } = useParams();
     
     useEffect( () => {
@@ -50,10 +51,10 @@ const Purchase = () => {
         <div className='container mx-auto px-4 mt-24'>
             <div className='mx-auto p-4 shadow-lg rounded-lg text-center'>
                 <h2 className='text-xl font-semibold'> You Are Purchasing <span className='font-bold'>{item.name} ({item.minOrderQty} Pcs)</span> </h2>
-                <button className='btn btn-sm btn-secondary hover:btn-primary text-white hover:text-white mt-3'>Show Details</button>
+                <button onClick={ () => setShowDetail(!showDetail)} className='btn btn-sm btn-secondary hover:btn-primary text-white hover:text-white mt-3'>Show Details</button>
             </div>
 
-            <div class="lg:w-2/3 w-full mx-auto overflow-auto mt-10">
+            <div class={`w-full mx-auto overflow-auto mt-10 ${showDetail ? '': 'hidden'}`}>
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
                     <tr>
@@ -81,7 +82,7 @@ const Purchase = () => {
                                 }
                             </div>
                         </td>
-                        <td class="px-4 py-3">$34232</td>
+                        <td class="px-4 py-3">${parseInt(orderQty) * item.price}</td>
                     </tr>
                     </tbody>
                 </table>
