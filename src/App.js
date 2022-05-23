@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import RequireAuth from './components/Auth/RequireAuth';
 import Footer from './components/Shared/Footer/Footer';
@@ -27,6 +29,7 @@ function App() {
         }
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

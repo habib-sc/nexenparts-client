@@ -2,6 +2,7 @@ import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Spinner from '../Shared/Spinner/Spinner';
 import SocialAuth from './SocialAuth';
@@ -23,6 +24,24 @@ const Login = () => {
     const handleLogin = data => {
         signInWithEmailAndPassword(data.email, data.password);
     };
+
+     // Handling Login errors 
+     if (error){
+        switch(error?.code){
+            case "auth/invalid-email":
+                toast.error("Invalid Email!", { toastId: 'invalidemail'});
+                break;
+            case "auth/wrong-password":
+                toast.error("Password Dont't Match!", { toastId: 'passworddontmatch'});
+                break;
+            case "auth/user-not-found":
+                toast.error("User Not Found!", { toastId: 'usernotfound'});
+                break;
+            default:
+                toast.error("Something Went Wrong!", { toastId: 'defaulterrorcase'});
+                break;
+        }
+    }
 
     if (loading) {
         return <Spinner></Spinner>
