@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <section className='bg-base-200'>
+        <section className='bg-base-200 mt-20'>
             <footer class="footer container mx-auto px-4 p-10 text-base-content">
                 <div className='h-full flex items-center'>
                     <h2 className='text-3xl font-semibold'>Nexen Car Parts.</h2>
