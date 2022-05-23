@@ -11,8 +11,6 @@ const Parts = () => {
             setParts(data);
         })();
     }, []);
-
-    console.log(parts);
     
     return (
         <div className='container mx-auto px-4 my-20'>
