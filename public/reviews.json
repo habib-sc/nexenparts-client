@@ -1,45 +1,45 @@
 [
     {
       "_id": 1,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     },
     {
       "_id": 2,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     },
     {
       "_id": 3,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     },
     {
       "_id": 4,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     },
     {
       "_id": 5,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     },
     {
       "_id": 6,
-      "reviewerName": "Conditionars",
-      "reviewerLocation": "Conditionars",
+      "reviewerName": "Fahim Kahn",
+      "reviewerLocation": "Dhaka",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non beatae quisquam nobis natus, voluptatibus aliquam reiciendis",
-      "img": "https://i.ibb.co/mySNn40/conditioners.jpg"
+      "img": "https://i.ibb.co/TmZFtj6/nicolas-horn-MTZTGv-Ds-HFY-unsplash.jpg"
     }
     
   ]
