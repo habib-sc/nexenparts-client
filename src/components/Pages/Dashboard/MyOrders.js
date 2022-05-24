@@ -13,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        const url = ` http://localhost:5000/orders?email=${user?.email}`;
+        const url = `http://localhost:5000/orders?email=${user?.email}`;
         ( async () => {
 
             try{
