@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Spinner from '../Shared/Spinner/Spinner';
 import SocialAuth from './SocialAuth';
@@ -10,6 +10,8 @@ const Register = () => {
     const [passwordError, setPasswordError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const [
         createUserWithEmailAndPassword,
@@ -37,7 +39,7 @@ const Register = () => {
     }
 
     if (user){
-        navigate('/');
+        navigate(from, { replace: true });
     }
 
     return (

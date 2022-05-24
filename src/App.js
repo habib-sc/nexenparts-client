@@ -22,7 +22,11 @@ function App() {
         }
 
         {
-          privateRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={<Component></Component>}></Route>)
+          privateRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={
+            <RequireAuth>
+              <Component></Component>
+            </RequireAuth>
+          }></Route>)
         }
 
         {/* Private Dashboard Routes  */}

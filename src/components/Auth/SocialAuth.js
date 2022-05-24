@@ -21,7 +21,7 @@ const SocialAuth = () => {
     }
 
     if (user){
-        navigate('/');
+        navigate(from, { replace: true });
     }
 
     return (
