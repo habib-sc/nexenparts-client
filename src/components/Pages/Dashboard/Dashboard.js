@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const Dashboard = () => {
+    const { pathname } = useLocation();
+
     return (
         <div className='mt-20 px-4'>
             
@@ -11,6 +13,15 @@ const Dashboard = () => {
                     {/* <!-- Page content here --> */}
                     
                     <Outlet/>
+
+                    {pathname.includes("dashboard") &&
+                        <div className='border rounded-lg h-full flex justify-center items-center'>
+                            <div className='text-center'>
+                                <h1 className='-mt-40 text-secondary font-semibold text-4xl'>Welcome To Dashboard</h1>
+                                <p className='mt-1 text-gl font-semibold'>Please Navigate to your favourite route form Left Side Menu Bar.</p>
+                            </div>
+                        </div>
+                    }
 
                 
                 </div> 
