@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Spinner from '../Shared/Spinner/Spinner';
 import SocialAuth from './SocialAuth';
 
@@ -22,6 +23,8 @@ const Register = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user);
+
     // Handling Register 
     const handleRegister = async data => {
         if (data.password !== data.confirmPassword) {
@@ -33,13 +36,17 @@ const Register = () => {
         const displayName = data.name;
         await updateProfile({displayName});
     };
+    
+
+    useEffect( () => {
+        if (token){
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from]);
+
 
     if (loading || updating) {
         return <Spinner></Spinner>
-    }
-
-    if (user){
-        navigate(from, { replace: true });
     }
 
     return (

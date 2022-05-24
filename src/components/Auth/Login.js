@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Spinner from '../Shared/Spinner/Spinner';
 import SocialAuth from './SocialAuth';
 
@@ -20,13 +21,16 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+    
+    const [token] = useToken(user);
 
     const handleLogin = data => {
         signInWithEmailAndPassword(data.email, data.password);
     };
 
-     // Handling Login errors 
-     if (error){
+
+    // Handling Login errors 
+    if (error){
         switch(error?.code){
             case "auth/invalid-email":
                 toast.error("Invalid Email!", { toastId: 'invalidemail'});
@@ -43,12 +47,15 @@ const Login = () => {
         }
     }
 
+
+    useEffect( () => {
+        if (token){
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from]);
+
     if (loading) {
         return <Spinner></Spinner>
-    }
-
-    if (user){
-        navigate(from, { replace: true });
     }
 
     return (
