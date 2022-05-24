@@ -1,8 +1,9 @@
-import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import myAxios from '../../../myAxios/myAxios';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const MyOrders = () => {
@@ -14,10 +15,22 @@ const MyOrders = () => {
     useEffect( () => {
         const url = ` http://localhost:5000/orders?email=${user?.email}`;
         ( async () => {
-            const { data } = await axios.get(url);
-            setMyOrders(data);
+
+            try{
+                const { data } = await myAxios.get(url);
+                setMyOrders(data);
+            }
+            catch(error){
+                const status = error.response.status;
+                if(status === 401 || status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                    navigate('/login');
+                }
+            }
+
         })();
-    }, [user?.email]);
+    }, [user?.email, navigate]);
 
     if(loading) {
         <Spinner></Spinner>
