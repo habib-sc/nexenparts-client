@@ -14,7 +14,7 @@ const Dashboard = () => {
                     
                     <Outlet/>
 
-                    {pathname.includes("dashboard") &&
+                    {pathname === '/dashboard' &&
                         <div className='border rounded-lg h-full flex justify-center items-center'>
                             <div className='text-center'>
                                 <h1 className='-mt-40 text-secondary font-semibold text-4xl'>Welcome To Dashboard</h1>
