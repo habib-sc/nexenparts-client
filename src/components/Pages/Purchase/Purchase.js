@@ -80,6 +80,17 @@ const Purchase = () => {
             const { data } = await axios.post(url, order);
 
             if (data.insertedId) {
+                const restQty = item.quantity - orderedQty;
+                ( async () => {
+                    const quantity = { quantity: restQty};
+
+                    const url = `http://localhost:5000/parts/update/${id}`;
+                    const { data } = await axios.patch(url, quantity);
+
+                    console.log(data);
+                    
+                })();
+
                 setOrdered(true);
                 setLoading(false);
             }

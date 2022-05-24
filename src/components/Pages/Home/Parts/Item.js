@@ -13,6 +13,10 @@ const Item = ({item}) => {
                 </div>
             </figure>
             <div class="card-body items-center text-center">
+                <div className='flex flex-wrap justify-between items-center border w-full rounded-lg'>
+                    <p className='text-primary'><span className='font-semibold text-sm text-secondary'>Available:</span> {quantity} Pcs</p>
+                    <p className='text-primary'><span className='font-semibold text-sm text-secondary'>Min Order QTY:</span> {minOrderQty} Pcs</p>
+                </div>
                 <p>{description}</p>
                 <div class="card-actions">
                 <Link to={`/purchase/${_id}`}><button class="btn btn-primary text-white">Order Now</button></Link>
