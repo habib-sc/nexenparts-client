@@ -32,7 +32,8 @@ const MyOrders = () => {
             }
 
         })();
-    }, [user?.email, navigate]);
+    }, [user?.email, navigate, cancelOrder]);
+
 
     if(loading) {
         <Spinner></Spinner>
