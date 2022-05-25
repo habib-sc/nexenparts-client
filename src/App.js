@@ -2,10 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import RequireAdmin from './components/Auth/RequireAdmin';
 import RequireAuth from './components/Auth/RequireAuth';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
+import { adminRoutes } from './routes/adminRoutes';
 import { dashboardRoutes } from './routes/dashboardRoutes';
 import { privateRoutes } from './routes/privateRoutes';
 import { publicRoutes } from './routes/publicRoutes';
@@ -16,10 +18,14 @@ function App() {
       <Header></Header>
       <Routes>
 
+
+
         {/* Public Routes  */}
         {
           publicRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={<Component></Component>}></Route>)
         }
+
+
 
         {
           privateRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={
@@ -29,16 +35,31 @@ function App() {
           }></Route>)
         }
 
+
+
         {/* Private Dashboard Routes  */}
-        <Route path='/dashboard' element={<Dashboard></Dashboard>}>
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard></Dashboard>
+          </RequireAuth>
+        }>
+
+          {/* Route for Normal user  */}
           {
-            dashboardRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={
-            <RequireAuth>
-              <Component></Component>
-            </RequireAuth>
+            dashboardRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={<Component></Component>}></Route>)
+          }
+
+          {/* Routes for Admin user  */}
+          {
+            adminRoutes.map(({path, Component}, index) => <Route key={index} path={path} element={
+              <RequireAdmin>
+                <Component></Component>
+              </RequireAdmin>
             }></Route>)
           }
+
         </Route>
+
         
         
       </Routes>

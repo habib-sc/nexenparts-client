@@ -71,7 +71,7 @@ const MyOrders = () => {
                                     <td>{order.orderedQty} /Pcs</td>
                                     <td>${order.totalPrice}</td>
                                     <td>
-                                        
+                                        {!order.shipped && <span className='bg-orange-100 text-orange-500 px-2 pb-1 rounded-lg text-sm'>Pending</span>}
                                     </td>
                                     <td className='w-32'> 
                                         {(order.totalPrice && !order.paid && !order.cancelled) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-secondary text-white'>Pay</button></Link>}
