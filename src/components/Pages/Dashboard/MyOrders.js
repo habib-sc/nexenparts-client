@@ -71,7 +71,8 @@ const MyOrders = () => {
                                     <td>{order.orderedQty} /Pcs</td>
                                     <td>${order.totalPrice}</td>
                                     <td>
-                                        {!order.shipped && <span className='bg-orange-100 text-orange-500 px-2 pb-1 rounded-lg text-sm'>Pending</span>}
+                                        {(!order.shipped && !order.approved) && <span className='bg-orange-100 text-orange-500 px-2 pb-1 rounded-lg text-sm'>Pending</span>}
+                                        {order.approved && <span className='bg-sky-100 text-sky-600 px-2 pb-1 rounded-lg text-sm'>Shipped</span>}
                                     </td>
                                     <td className='w-32'> 
                                         {(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-secondary text-white'>Pay</button></Link>}

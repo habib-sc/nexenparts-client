@@ -5,7 +5,6 @@ import myAxios from '../../../myAxios/myAxios';
 const CancelConfirm = ({cancelOrder, setCancelOrder}) => {
 
     const handleCancelOrder = () => {
-        const cancelledData = {cancelled: true};
 
         ( async () => {
             const url = `http://localhost:5000/order/delete/${cancelOrder._id}`;
