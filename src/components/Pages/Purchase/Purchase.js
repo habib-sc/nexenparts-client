@@ -32,7 +32,10 @@ const Purchase = () => {
         const qty = e.target.value;
 
         if(qty < item.minOrderQty) {
-            setQtyError(`Minimum Order Quantity ${item.minOrderQty} Pcs`)
+            setQtyError(`Minimum Order Quantity ${item.minOrderQty} Pcs`);
+        }
+        else if(qty > item.quantity){
+            setQtyError(`Available Quantity ${item.quantity} Pcs`);
         }
         else{
             setQtyError('');
@@ -50,7 +53,9 @@ const Purchase = () => {
 
     // Increase Qty
     const increaseQty = () => {
-        setOrderQty(parseInt(orderQty) + 1);
+        if(orderQty < item.quantity){
+            setOrderQty(parseInt(orderQty) + 1);
+        }
     };
 
     // Handle purchase 
