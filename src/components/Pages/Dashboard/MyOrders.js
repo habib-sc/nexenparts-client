@@ -71,22 +71,24 @@ const MyOrders = () => {
                                     <td>{order.orderedQty} /Pcs</td>
                                     <td>${order.totalPrice}</td>
                                     <td>
-                                        {order.paid && <span className='bg-green-200 text-green-700 px-2 pb-1 rounded-lg text-sm'>Paid</span>}  
-                                        {order.cancelled && <span className='bg-red-100 text-red-400 px-2 pb-1 rounded-lg text-sm'>Cancelled</span>}  
+                                        
                                     </td>
                                     <td className='w-32'> 
                                         {(order.totalPrice && !order.paid && !order.cancelled) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-secondary text-white'>Pay</button></Link>}
                                         {(order.totalPrice && !order.paid && !order.cancelled) && <label onClick={ () => setCancelOrder(order)} htmlFor="order-cancel" className='btn btn-xs btn-error text-white ml-2'>Cancel</label>}
 
-                                        {order.cancelled && 
-                                        <div className='border px-2 rounded-lg'>
-                                            <p className='font-bold'>Will be deleted soon</p>
-                                        </div>}
+                                        {order.cancelled && <span className='bg-red-100 text-red-400 px-2 pb-1 rounded-lg text-sm'>Cancelled</span>}
+
+                                        {order.paid && 
+                                        <div className='mb-2'>
+                                            <span className='bg-green-200 text-green-600 px-2 pb-1 rounded-lg text-sm'>Paid</span>
+                                        </div>
+                                        }  
 
                                         {order.transactionId && 
-                                        <div className='border pb-1 px-2 rounded-lg'>
+                                        <div className='border pb-1 px-2 rounded-lg w-[150px] relative overflow-x-auto'>
                                             <p className='font-bold'>Txn Id:</p>
-                                            <p>{order.transactionId}</p> 
+                                            <p className='text-sm'>{order.transactionId}</p> 
                                         </div>}
 
                                     </td>
