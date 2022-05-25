@@ -34,9 +34,13 @@ const Dashboard = () => {
                     <label for="my-drawer-2" class="drawer-overlay"></label> 
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     
-                        <li className='mb-3'><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
-                        <li className='mb-3'><NavLink to='/dashboard/add-review'>Add A Review</NavLink></li>
-                        <li className='mb-3'><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
+                        {!admin &&
+                            <>
+                                <li className='mb-3'><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
+                                <li className='mb-3'><NavLink to='/dashboard/add-review'>Add A Review</NavLink></li>
+                                <li className='mb-3'><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
+                            </>
+                        }
 
                         {admin &&
                             <>
