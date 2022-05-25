@@ -8,7 +8,7 @@ const AddProduct = () => {
 
     return (
         <div className='border px-5 py-10 rounded-lg shadow-lg'>
-            <h2 className='text-3xl font-semibold font-secondary mb-5'>Add Item Here</h2>
+            <h2 className='text-2xl font-semibold font-secondary mb-5'>Add Item Here</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 
                 <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 items-end'>
@@ -34,7 +34,7 @@ const AddProduct = () => {
                     </div>
                     <div className='grid gird-cols-1'>
                         <label htmlFor="">Description</label>
-                        <textarea className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("description", {required: true})} />
+                        <textarea className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("description")} />
                     </div>
 
                 </div>
