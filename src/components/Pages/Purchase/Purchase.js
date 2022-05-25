@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import myAxios from '../../../myAxios/myAxios';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const Purchase = () => {
@@ -82,7 +83,7 @@ const Purchase = () => {
 
         ( async () => {
             const url = "http://localhost:5000/order";
-            const { data } = await axios.post(url, order);
+            const { data } = await myAxios.post(url, order);
 
             if (data.insertedId) {
                 const restQty = item.quantity - orderedQty;
@@ -90,7 +91,7 @@ const Purchase = () => {
                     const quantity = { quantity: restQty};
 
                     const url = `http://localhost:5000/parts/update/${id}`;
-                    const { data } = await axios.patch(url, quantity);
+                    const { data } = await myAxios.patch(url, quantity);
 
                     console.log(data);
                     
