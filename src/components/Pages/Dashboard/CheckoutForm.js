@@ -1,5 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import myAxios from '../../../myAxios/myAxios';
+import Spinner from '../../Shared/Spinner/Spinner';
 
 const CheckoutForm = ({order}) => {
     const stripe = useStripe();
@@ -9,9 +11,23 @@ const CheckoutForm = ({order}) => {
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
     const [processing, setProcessing] = useState(false);
-    console.log(clientSecret);
 
     const { _id, totalPrice, email, name } = order;
+
+
+    useEffect( () => {
+
+        ( async () => {
+            const url = 'http://localhost:5000/create-payment-intent';
+            const { data } = await myAxios.post(url, {totalPrice});
+            if (data?.clientSecret){
+                setClientSecret(data.clientSecret);
+            }
+
+        })();
+
+
+    }, [totalPrice]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -26,7 +42,7 @@ const CheckoutForm = ({order}) => {
             return;
         }
 
-        const {error} = await stripe.createPaymentMethod({
+        const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -67,21 +83,22 @@ const CheckoutForm = ({order}) => {
                 order: _id,
                 transactionId: paymentIntent.id
             };
-            fetch(`http://localhost:5000/order/${_id}`, {
-                method: 'PATCH',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                },
-                body: JSON.stringify(payment)
-            })
-            .then(res => res.json())
-            .then(data => {
-                setProcessing(false);
-            });
+
+            ( async () => {
+                const url = `http://localhost:5000/order/${_id}`;
+                const { data } = await myAxios.patch(url, payment);
+            })();
+    
         }
 
+        setProcessing(false);
+
     };
+
+
+    if(processing){
+        return <Spinner></Spinner>
+    }
 
     return (
         <>
