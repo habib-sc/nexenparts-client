@@ -74,10 +74,8 @@ const MyOrders = () => {
                                         {!order.shipped && <span className='bg-orange-100 text-orange-500 px-2 pb-1 rounded-lg text-sm'>Pending</span>}
                                     </td>
                                     <td className='w-32'> 
-                                        {(order.totalPrice && !order.paid && !order.cancelled) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-secondary text-white'>Pay</button></Link>}
-                                        {(order.totalPrice && !order.paid && !order.cancelled) && <label onClick={ () => setCancelOrder(order)} htmlFor="order-cancel" className='btn btn-xs btn-error text-white ml-2'>Cancel</label>}
-
-                                        {order.cancelled && <span className='bg-red-100 text-red-400 px-2 pb-1 rounded-lg text-sm'>Cancelled</span>}
+                                        {(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-secondary text-white'>Pay</button></Link>}
+                                        {(order.totalPrice && !order.paid) && <label onClick={ () => setCancelOrder(order)} htmlFor="order-cancel" className='btn btn-xs btn-error text-white ml-2'>Cancel</label>}
 
                                         {order.paid && 
                                         <div className='mb-2'>
