@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import myAxios from '../../../myAxios/myAxios';
 
-const CancelConfirm = ({cancelOrder, setCancelOrder}) => {
+const CancelConfirm = ({cancelOrder, setCancelOrder, refetch}) => {
 
     const handleCancelOrder = () => {
 
@@ -11,6 +11,7 @@ const CancelConfirm = ({cancelOrder, setCancelOrder}) => {
             const { data } = await myAxios.delete(url);
             toast.success('Order has been cancelled');
             setCancelOrder(null);
+            refetch();
         })();
 
         

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import myAxios from '../../../../myAxios/myAxios';
 import Spinner from '../../../Shared/Spinner/Spinner';
+import CancelConfirm from '../CancelConfirm';
 
 const AllOrders = () => {
+
+    const [cancelOrder, setCancelOrder] = useState({});
 
     const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/all-orders', {
         method: 'GET',
@@ -70,7 +73,7 @@ const AllOrders = () => {
                                 </td>
                                 <td className='w-32'> 
                                     {(order.totalPrice && !order.approved && order.paid) && <button onClick={ () => handleOrderApprove(order)} className='btn btn-xs btn-secondary text-white mb-1'>Approve</button>}
-                                    {(order.totalPrice && !order.paid) && <label htmlFor="" className='btn btn-xs btn-error text-white ml-2'>Cancel</label>}  
+                                    {(order.totalPrice && !order.paid) && <label onClick={ () => setCancelOrder(order)} htmlFor="order-cancel" className='btn btn-xs btn-error text-white ml-2'>Cancel</label>}  
 
                                     {order.transactionId && 
                                     <div className='border pb-1 px-2 rounded-lg w-[150px] relative overflow-x-auto'>
@@ -84,6 +87,10 @@ const AllOrders = () => {
                     </tbody>
                 </table>
         </div>
+
+        {cancelOrder &&
+            <CancelConfirm cancelOrder={cancelOrder} setCancelOrder={setCancelOrder} refetch={refetch}></CancelConfirm>
+        }
 
 
 
