@@ -2,6 +2,7 @@ import AddProduct from "../components/Pages/Dashboard/Admin/AddProduct";
 import AllOrders from "../components/Pages/Dashboard/Admin/AllOrders";
 import AllProducts from "../components/Pages/Dashboard/Admin/AllProducts";
 import AllUsers from "../components/Pages/Dashboard/Admin/AllUsers";
+import MyProfile from "../components/Pages/Dashboard/MyProfile";
 
 
 export const adminRoutes = [ 
@@ -9,4 +10,5 @@ export const adminRoutes = [
     { path: '/dashboard/all-products', name: 'AllProducts', Component: AllProducts }, 
     { path: '/dashboard/all-users', name: 'AllUsers', Component: AllUsers}, 
     { path: '/dashboard/add-product', name: 'AddProduct', Component: AddProduct }, 
+    { path: '/dashboard/my-profile', name: 'Purchase', Component: MyProfile }, 
 ];
