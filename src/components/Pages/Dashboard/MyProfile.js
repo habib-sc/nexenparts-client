@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import myAxios from '../../../myAxios/myAxios';
@@ -12,28 +11,49 @@ const MyProfile = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [loadingUpdate, setLoadingUpdate] = useState(false);
 
-    const avatarPlaceHolder = user.email[0].toUpperCase();
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [education, setEducation] = useState("");
+    const [jobTitle, setJobTitle] = useState("");
+    const [linkedin, setLinkedin] = useState("");
+    const [facebook, setFacebook] = useState("");
 
-    const url = `http://localhost:5000/user-info/${user?.email}`;
-    const { data: userInfo, isLoading, refetch } = useQuery('userInfo', () => fetch(url, {
-        method: 'GET',
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => res.json()));
+    const [infoUpdated, setInfoUpdated] = useState(false);
+
+    const avatarPlaceHolder = user.displayName[0].toUpperCase() || user.email[0].toUpperCase();
+
+    useEffect( () => {
+        const url = `http://localhost:5000/user-info/${user?.email}`;
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(result => {
+            setAddress(result.address);
+            setPhone(result.phone);
+            setEducation(result.education);
+            setJobTitle(result.jobTitle);
+            setLinkedin(result.linkedin);
+            setFacebook(result.facebook);
+        });
+
+    }, [infoUpdated, user?.email]);
 
 
     // Handlinig update user info 
-    const handleUpdateProfile = data => {
-        console.log(data);
+    const handleUpdateProfile = e => {
+        e.preventDefault();
 
         const userData = {
-            address: data.address,
-            phone: data.phone,
-            education: data.education,
-            jobTitle: data.jobTitle,
-            linkedin: data.linkedin,
-            facebook: data.facebook
+            address: e.target.address.value,
+            phone: e.target.phone.value,
+            education: e.target.education.value,
+            jobTitle: e.target.jobTitle.value,
+            linkedin: e.target.linkedin.value,
+            facebook: e.target.facebook.value,
         }
 
         setLoadingUpdate(true);
@@ -46,8 +66,8 @@ const MyProfile = () => {
 
             if(data.result.acknowledged){
                 toast.success('Profile Updated Successfully');
-                reset();
                 setLoadingUpdate(false);
+                setInfoUpdated(!infoUpdated);
             }
             else{
                 toast.error('Failed Update Profile');
@@ -67,15 +87,15 @@ const MyProfile = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>      
                 <div className='flex items-center justify-center gap-4 border p-5 rounded-lg'>
                     <div>
-                        {user.photoURL &&
+                        {user?.photoURL &&
                         <div class="avatar">
                             <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={user.photoURL} alt='avatar' />
+                                <img src={user?.photoURL} alt='avatar' />
                             </div>
                         </div>
                         }
 
-                        {!user.photoURL &&
+                        {!user?.photoURL &&
                         <div class="avatar placeholder">
                             <div class="bg-neutral-focus text-neutral-content rounded-full w-16">
                                 <span class="text-3xl">{avatarPlaceHolder}</span>
@@ -91,8 +111,25 @@ const MyProfile = () => {
                 </div>
 
                 <div className='lg:col-span-2'>
-                    <div className='flex flex-wrap gap-4 border p-5 rounded-lg'>
-                        <p><span className='font-semibold'>Phone:</span> {userInfo?.phone}</p>
+                    <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 border p-5 rounded-lg'>
+                        <div>
+                            <p><span className='font-semibold'>Phone:</span> {phone}</p>
+                        </div>
+                        <div>
+                            <p><span className='font-semibold'>Address:</span> {address}</p>
+                        </div>
+                        <div>
+                            <p><span className='font-semibold'>Education:</span> {education}</p>
+                        </div>  
+                        <div>
+                            <p><span className='font-semibold'>Job Title:</span> {jobTitle}</p>
+                        </div>  
+                        <div>
+                            <p><span className='font-semibold'>Linkedin:</span> {linkedin}</p>
+                        </div>
+                        <div>
+                            <p><span className='font-semibold'>Facebook:</span> {facebook}</p>
+                        </div>
                     </div> 
                 </div>
 
@@ -100,35 +137,35 @@ const MyProfile = () => {
 
             
 
-            <h2 className='text-2xl font-semibold text-center font-secondary mt-10 mb-8'>Update More Information</h2>
+            <h2 className='text-2xl font-semibold text-center font-secondary mt-10 mb-8'>Update Prfile Info</h2>
 
             <div className='w-full'>
-                <form onSubmit={handleSubmit(handleUpdateProfile)}>
+                <form onSubmit={handleUpdateProfile}>
                     
                     <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Address</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("address")} />
+                            <input value={address} onChange={ (e) => setAddress(e.target.address)} className='border border-gray-400 py-2 px-2 rounded-lg' type="text" name='address' />
                         </div>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Phone Number</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("phone")} />
+                            <input value={phone} onChange={ (e) => setPhone(e.target.phone)} className='border border-gray-400 py-2 px-2 rounded-lg' type="number" name='phone' />
                         </div>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Education</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("education")} />
+                            <input value={education} onChange={ (e) => setEducation(e.target.education)} className='border border-gray-400 py-2 px-2 rounded-lg' type="text" name='education' />
                         </div>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Job Title</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("jobTitle")} />
+                            <input value={jobTitle} onChange={ (e) => setJobTitle(e.target.jobTitle)} className='border border-gray-400 py-2 px-2 rounded-lg' type="text" name='jobTitle' />
                         </div>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Linkedin profile</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="url" {...register("linkedin")} />
+                            <input value={linkedin} onChange={ (e) => setLinkedin(e.target.linkedin)} className='border border-gray-400 py-2 px-2 rounded-lg' type="url" name='linkedin' />
                         </div>
                         <div className='grid gird-cols-1'>
                             <label htmlFor="">Facebook profile</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="url" {...register("facebook")} />
+                            <input value={facebook} onChange={ (e) => setFacebook(e.target.facebook)} className='border border-gray-400 py-2 px-2 rounded-lg' type="url" name='facebook'  />
                         </div>
                     </div>
 
