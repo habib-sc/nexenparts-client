@@ -1,0 +1,22 @@
+[
+    {
+      "projectName": "Furnitory",
+      "Description": "This is a Invetory management app for a furniture business. Using this they can track their stock . They can easily maintain their stock",
+      "liveLink": "https://furnitory-cc593.web.app/",
+      "img": "https://i.ibb.co/MnhdQ74/furnitory.png"
+    },
+    {
+      "projectName": "Travego",
+      "Description": "Travego is a travel or tour guide service provider website. People can see some travel or tour packages. And they can call the guide for their tour.",
+      "liveLink": "https://travego-70ecd.web.app/",
+      "img": "https://i.ibb.co/xhhw8Yv/travego.png"
+    },
+    {
+      "projectName": "Easy Weather",
+      "Description": "This is a Simple weather app. People can search by their city or area name and knwo the weather with weather icon.",
+      "liveLink": "https://easy-weather2.netlify.app",
+      "img": "https://i.ibb.co/fnCK8n8/easy-weather.png"
+    }
+    
+    
+]

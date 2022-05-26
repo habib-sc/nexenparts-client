@@ -16,8 +16,9 @@ const Header = () => {
 
     const menuItems = <>
         <li className='ml-3'><NavLink to='/'>Home</NavLink></li>
-        <li className='ml-3'><NavLink to='/about'>About</NavLink></li>  
-        <li className='ml-3'><NavLink to='/contact'>Contact</NavLink></li>
+        <li className='ml-3'><NavLink to='/my-portfolio'>My Portfolio</NavLink></li>  
+        <li className='ml-3'><NavLink to='/blogs'>Blogs</NavLink></li>
+        <li className='ml-3'><NavLink to='/About'>About</NavLink></li>
         {user &&
             <li className='ml-3'><NavLink to='/dashboard'>Dashboard</NavLink></li>  
         }

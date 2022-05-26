@@ -1,0 +1,64 @@
+[
+    {
+      "_id": 1,
+      "skill": "React Js",
+      "level": "Experties",
+      "img": "https://i.ibb.co/8zV2Y2L/react.png"
+    },
+    {
+      "_id": 2,
+      "skill": "Javascript",
+      "level": "Experties",
+      "img": "https://i.ibb.co/xX6831m/js.png"
+    },
+    {
+      "_id": 3,
+      "skill": "Tailwindcss",
+      "level": "Experties",
+      "img": "https://i.ibb.co/jvqgVdR/tailwindcss-svg.png"
+    },
+    {
+      "_id": 4,
+      "skill": "Bootstrap",
+      "level": "Experties",
+      "img": "https://i.ibb.co/fk6PVbg/bootstrap.png"
+    },
+    {
+      "_id": 5,
+      "skill": "Daisy Ui",
+      "level": "Experties",
+      "img": "https://i.ibb.co/bPKK35Y/daisyui.png"
+    },
+    {
+      "_id": 6,
+      "skill": "Html",
+      "level": "Experties",
+      "img": "https://i.ibb.co/Fqb42sg/html.png"
+    },
+    {
+      "_id": 7,
+      "skill": "Css",
+      "level": "Experties",
+      "img": "https://i.ibb.co/SRZWDcv/css.png"
+    },
+    {
+      "_id": 8,
+      "skill": "Node Js",
+      "level": "Comfortable",
+      "img": "https://i.ibb.co/SPHXMQq/node.png"
+    },
+    {
+      "_id": 9,
+      "skill": "Express Js",
+      "level": "Comfortable",
+      "img": "https://i.ibb.co/QpqwT0f/express.png"
+    },
+    {
+      "_id": 10,
+      "skill": "MongoDB",
+      "level": "Comfortable",
+      "img": "https://i.ibb.co/XC6csPX/mongodb.webp"
+    }
+    
+    
+  ]
