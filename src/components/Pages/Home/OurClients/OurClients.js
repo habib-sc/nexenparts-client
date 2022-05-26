@@ -4,8 +4,8 @@ const OurClients = () => {
     return (
         <div className='bg-secondary pb-2'>
             <div className='container px-4 mx-auto my-20'>
-                <h1 class="text-center text-3xl font-bold text-white mb-10 uppercase pt-5">Our Clients</h1>
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <h1 className="text-center text-3xl font-bold text-white mb-10 uppercase pt-5">Our Clients</h1>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                             <div className='lg:px-20'>
                                 <img className='w-full' src="https://i.ibb.co/Bwg82SL/client-img1-hov.png" alt="" />
                             </div>

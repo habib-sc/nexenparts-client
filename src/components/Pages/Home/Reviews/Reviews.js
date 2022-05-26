@@ -45,9 +45,9 @@ const Reviews = () => {
 
     return (
         <div className='container px-4 mx-auto my-20'>
-            <h1 class="text-center text-3xl font-bold mb-10 uppercase">Latest Reviews</h1>
+            <h1 className="text-center text-3xl font-bold mb-10 uppercase">Latest Reviews</h1>
                 {reviews.length > 0 &&
-                <div class="">
+                <div className="">
                         <Slider {...sliderSettings}>
                             {
                                 reviews.map(review => <ReviewItem key={review._id} review={review}></ReviewItem>)

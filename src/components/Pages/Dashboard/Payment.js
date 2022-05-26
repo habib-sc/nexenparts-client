@@ -50,25 +50,25 @@ const Payment = () => {
                     <h2 className='text-2xl text-secondary font-semibold'>Hello, {order.name}</h2>
                     <h2 className='text-2xl text-primary font-semibold mb-2'>Make payment for {order.itemName}</h2>
 
-                    <table class="table-auto w-full text-left whitespace-no-wrap">
+                    <table className="table-auto w-full text-left whitespace-no-wrap">
                         <thead>
                             <tr>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl-lg rounded-bl-lg">Image</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Item</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Unit Price</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Quantity</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr-lg rounded-br-lg">Total</th>
+                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl-lg rounded-bl-lg">Image</th>
+                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Item</th>
+                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Unit Price</th>
+                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Quantity</th>
+                                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr-lg rounded-br-lg">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="px-4 py-3">
+                            <td className="px-4 py-3">
                                 <img src={order.img} alt="" className='w-20 border rounded-lg border-gray-300' />
                             </td>
-                            <td class="px-4 py-3">{order.itemName}</td>
-                            <td class="px-4 py-3">${order.unitPrice}</td>
-                            <td class="px-4 py-3">{order.orderedQty} Pcs</td>
-                            <td class="px-4 py-3 font-semibold">${order.totalPrice}</td>
+                            <td className="px-4 py-3">{order.itemName}</td>
+                            <td className="px-4 py-3">${order.unitPrice}</td>
+                            <td className="px-4 py-3">{order.orderedQty} Pcs</td>
+                            <td className="px-4 py-3 font-semibold">${order.totalPrice}</td>
                         </tr>
                         </tbody>
                     </table>

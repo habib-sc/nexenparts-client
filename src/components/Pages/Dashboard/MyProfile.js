@@ -88,17 +88,17 @@ const MyProfile = () => {
                 <div className='flex items-center justify-center gap-4 border p-5 rounded-lg'>
                     <div>
                         {user?.photoURL &&
-                        <div class="avatar">
-                            <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <div className="avatar">
+                            <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                 <img src={user?.photoURL} alt='avatar' />
                             </div>
                         </div>
                         }
 
                         {!user?.photoURL &&
-                        <div class="avatar placeholder">
-                            <div class="bg-neutral-focus text-neutral-content rounded-full w-16">
-                                <span class="text-3xl">{avatarPlaceHolder}</span>
+                        <div className="avatar placeholder">
+                            <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
+                                <span className="text-3xl">{avatarPlaceHolder}</span>
                             </div>
                         </div>
                         }
