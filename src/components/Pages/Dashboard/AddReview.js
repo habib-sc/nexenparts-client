@@ -1,44 +1,33 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import ReactStars from "react-rating-stars-component";
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 import myAxios from '../../../myAxios/myAxios';
 import Spinner from '../../Shared/Spinner/Spinner';
 
+
 const AddReview = () => {
+    const [user] = useAuthState(auth);
+    const [rating, setRating] = useState(0);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [loading, setLoading] = useState(false);
+    
+    const ratingChanged = (newRating) => {
+        setRating(newRating)
+    };
 
     // Handling adding review 
     const handleAddReview = data => {
-        const image = data.img[0];
-        const formData = new FormData();
-        formData.append('image', image);
 
         setLoading(true);
 
-        let img;
-
-        if(image){
-            // Sending image to image bb server 
-            const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMAGE_STORAGE_KEY}`;
-            fetch(url, {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(result => {
-                if(result.success){
-                    img = result.data.url;
-                    
-                }
-            });
-        }
-
         const reviewData = {
-            reviewerName: data.reviewerName,
+            reviewerName: user?.displayName,
             description: data.description,
-            reviewerLocation: data.reviewerLocation,
-            img: img
+            rating: rating,
+            img: user?.photoURL
         };
 
         // Send review info to database 
@@ -56,8 +45,6 @@ const AddReview = () => {
             }
         })();
 
-
-
     };
 
     if(loading) {
@@ -72,20 +59,21 @@ const AddReview = () => {
                     
                     <div className='grid grid-cols-1 w-full lg:w-[600px] md:w-[500px] gap-4'>
                         <div className='grid gird-cols-1'>
-                            <label htmlFor="">Your Name</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("reviewerName", {required: true})} />
-                        </div>
-                        <div className='grid gird-cols-1'>
                             <label htmlFor="">Review Description</label>
                             <textarea className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("description", {required: true})} />
                         </div>
-                        <div className='grid gird-cols-1'>
-                            <label htmlFor="">Address (Optional)</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="text" {...register("reviewerLocation")} />
-                        </div>
-                        <div className='grid gird-cols-1'>
-                            <label htmlFor="">Upload Image (Optional)</label>
-                            <input className='border border-gray-400 py-2 px-2 rounded-lg' type="file" {...register("img")} />
+                        <div className='flex items-center gap-2'>
+                            <label>Ratings: </label>
+                            <ReactStars
+                                count={5}
+                                onChange={ratingChanged}
+                                size={24}
+                                isHalf={true}
+                                emptyIcon={<i className="far fa-star"></i>}
+                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                fullIcon={<i className="fa fa-star"></i>}
+                                activeColor="#ffd700"
+                            />
                         </div>
                         
                         <button className='btn btn-secondary mt-5 text-white w-full'>Submit</button>
