@@ -4,7 +4,7 @@ import carPart from '../../../../assets/images/car-part.png';
 const Banner = () => {
     return (
         <div>
-            <div class="hero min-h-[60vh] bg-base-200">
+            <div class="hero min-h-[70vh] bg-base-200">
                 <div class="hero-content flex-col lg:flex-row-reverse mt-14">
                     <div className='flex-1'>
                         <img src={carPart} class="" alt='' />

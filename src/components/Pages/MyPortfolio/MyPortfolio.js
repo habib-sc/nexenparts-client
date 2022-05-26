@@ -85,7 +85,7 @@ const MyPortfolio = () => {
                                 </div>
                                 <div>
                                     <h2 className='text-xl font-semibold mt-2'>{project.projectName}</h2>
-                                    <p className='font-semibold text-blue-500'><a href={project.liveLink}>Live Link</a></p>
+                                    <p className='font-semibold text-blue-500'><a href={project.liveLink} target='_blank' rel="noreferrer">Live Link</a></p>
                                     <p className='mb-1 mt-2'>{project.description}</p>
                                 </div>
                         </div>)

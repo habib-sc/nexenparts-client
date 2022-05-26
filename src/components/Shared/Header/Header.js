@@ -44,7 +44,7 @@ const Header = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to='/' className='btn btn-ghost normal-case text-xl'>Nexen Car Parts.</Link>
+                    <Link to='/'><h2 className='text-2xl font-bold'>Nexen Car Parts.</h2></Link>
                 </div>
                <div className='navbar-end'>
                     <div className="hidden lg:flex">
