@@ -11,14 +11,14 @@ const ReviewItem = ({review}) => {
                 {img &&
                 <div class="avatar mb-5 mt-3">
                     <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={img} />
+                        <img src={img} alt='avatar' />
                     </div>
                 </div>}
 
                 {!img &&
                 <div class="avatar mb-5 mt-3">
                     <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={people} />
+                        <img src={people} alt='avatar' />
                     </div>
                 </div>}
 
