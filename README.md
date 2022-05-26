@@ -1,3 +1,39 @@
+# Project Info
+
+### Project Name: Nexen Car Parts
+
+### Short Description
+This is a car parts manufacturer website where user can order parts. User can pay bill through credit or debit card like mastercard, visa card, amex card etc. Admin or website owner can see orders and can change order status if custer paid for the orders. And also user can give review from user dashboard.
+
+### Live Link
+To See live site [click here]().
+
+### Some Features
+  * Google Login/Registration and Email-Password Login/Register
+  * User dashboard & Admin Dashboard
+  * User profile
+  * User Review 
+  * Add Product
+  * Delete Product
+  * Product Order
+  * Update order status form admin
+  * Credit card payment
+  * Responsive design
+
+
+### Technology Used
+  * HTML
+  * CSS
+  * Javascript
+  * Tailwind CSS
+  * React Js
+  * Axios
+  * Firebase
+  * React Toastify
+  * React Router
+  * Daisy Ui
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
