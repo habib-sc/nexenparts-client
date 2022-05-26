@@ -62,7 +62,6 @@ const MyProfile = () => {
         ( async () => {
             const url = `http://localhost:5000/user/${user?.email}`;
             const { data } = await myAxios.put(url, userData);
-            console.log(data);
 
             if(data.result.acknowledged){
                 toast.success('Profile Updated Successfully');

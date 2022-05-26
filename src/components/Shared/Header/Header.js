@@ -18,7 +18,6 @@ const Header = () => {
         <li className='ml-3'><NavLink to='/'>Home</NavLink></li>
         <li className='ml-3'><NavLink to='/my-portfolio'>My Portfolio</NavLink></li>  
         <li className='ml-3'><NavLink to='/blogs'>Blogs</NavLink></li>
-        <li className='ml-3'><NavLink to='/About'>About</NavLink></li>
         {user &&
             <li className='ml-3'><NavLink to='/dashboard'>Dashboard</NavLink></li>  
         }
