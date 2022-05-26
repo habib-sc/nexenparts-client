@@ -5,6 +5,7 @@ import './App.css';
 import RequireAdmin from './components/Auth/RequireAdmin';
 import RequireAuth from './components/Auth/RequireAuth';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
+import NotFound from './components/Pages/NotFound/NotFound';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import { adminRoutes } from './routes/adminRoutes';
@@ -59,6 +60,9 @@ function App() {
           }
 
         </Route>
+
+        {/* 404 page route */}
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
         
         
