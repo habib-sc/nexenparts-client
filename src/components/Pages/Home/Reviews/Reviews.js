@@ -46,8 +46,6 @@ const Reviews = () => {
     return (
         <div className='container px-4 mx-auto my-20'>
             <h1 class="text-center text-3xl font-bold mb-10 uppercase">Latest Reviews</h1>
-            <div class="container px-5 mx-auto">
-
                 {reviews.length > 0 &&
                 <div class="">
                         <Slider {...sliderSettings}>
@@ -56,8 +54,6 @@ const Reviews = () => {
                             }
                         </Slider>  
                 </div>}
-            </div>
-
         </div>
     );
 };
