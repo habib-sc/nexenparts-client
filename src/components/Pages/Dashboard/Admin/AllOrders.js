@@ -9,7 +9,7 @@ const AllOrders = () => {
 
     const [cancelOrder, setCancelOrder] = useState({});
 
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/all-orders', {
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('https://mighty-chamber-14802.herokuapp.com/all-orders', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const AllOrders = () => {
         const approveData = {approved: true};
 
         ( async () => {
-            const url = `http://localhost:5000/order/approve/${order._id}`;
+            const url = `https://mighty-chamber-14802.herokuapp.com/order/approve/${order._id}`;
             const { data } = await myAxios.patch(url, approveData);
             if(data) {
                 toast.success('Order Approved.');

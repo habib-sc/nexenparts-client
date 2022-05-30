@@ -23,7 +23,7 @@ const MyProfile = () => {
     const avatarPlaceHolder = user.displayName[0].toUpperCase() || user.email[0].toUpperCase();
 
     useEffect( () => {
-        const url = `http://localhost:5000/user-info/${user?.email}`;
+        const url = `https://mighty-chamber-14802.herokuapp.com/user-info/${user?.email}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -60,7 +60,7 @@ const MyProfile = () => {
 
         // Send user info to database 
         ( async () => {
-            const url = `http://localhost:5000/user/${user?.email}`;
+            const url = `https://mighty-chamber-14802.herokuapp.com/user/${user?.email}`;
             const { data } = await myAxios.put(url, userData);
 
             if(data.result.acknowledged){

@@ -6,7 +6,7 @@ const AllProducts = () => {
 
     const [deleteItem, setDeleteItem] = useState({});
 
-    const { data: allparts, isLoading, refetch } = useQuery('allParts', () => fetch('http://localhost:5000/parts', {
+    const { data: allparts, isLoading, refetch } = useQuery('allParts', () => fetch('https://mighty-chamber-14802.herokuapp.com/parts', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

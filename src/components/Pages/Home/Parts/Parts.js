@@ -7,7 +7,7 @@ const Parts = () => {
 
     useEffect( () => {
         ( async () => {
-            const { data } = await axios.get('http://localhost:5000/parts');
+            const { data } = await axios.get('https://mighty-chamber-14802.herokuapp.com/parts');
             setParts(data);
         })();
     }, []);

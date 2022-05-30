@@ -16,7 +16,7 @@ const Payment = () => {
     const { id } = useParams();
     
     useEffect( () => {
-        const url = `http://localhost:5000/order/${id}`;
+        const url = `https://mighty-chamber-14802.herokuapp.com/order/${id}`;
         setLoading(true);
         ( async () => {
             try{

@@ -32,7 +32,7 @@ const AddReview = () => {
 
         // Send review info to database 
         ( async () => {
-            const { data } = await myAxios.post('http://localhost:5000/add-review', reviewData);
+            const { data } = await myAxios.post('https://mighty-chamber-14802.herokuapp.com/add-review', reviewData);
 
             if(data.insertedId){
                 toast.success('Review Added Successfully');

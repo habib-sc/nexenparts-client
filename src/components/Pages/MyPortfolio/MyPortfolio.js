@@ -4,9 +4,9 @@ import Spinner from '../../Shared/Spinner/Spinner';
 
 const MyPortfolio = () => {
 
-    const { data: skills, isLoading } = useQuery('skills', () => fetch('http://localhost:5000/skills').then(res => res.json()) );
-    const { data: tools, isLoading: loading2 } = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()) );
-    const { data: projects, isLoading: loading3 } = useQuery('projects', () => fetch('http://localhost:5000/projects').then(res => res.json()) );
+    const { data: skills, isLoading } = useQuery('skills', () => fetch('https://mighty-chamber-14802.herokuapp.com/skills').then(res => res.json()) );
+    const { data: tools, isLoading: loading2 } = useQuery('tools', () => fetch('https://mighty-chamber-14802.herokuapp.com/tools').then(res => res.json()) );
+    const { data: projects, isLoading: loading3 } = useQuery('projects', () => fetch('https://mighty-chamber-14802.herokuapp.com/projects').then(res => res.json()) );
 
     if(isLoading || loading2 || loading3) {
         return <Spinner></Spinner>

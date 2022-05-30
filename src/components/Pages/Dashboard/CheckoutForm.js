@@ -18,7 +18,7 @@ const CheckoutForm = ({order}) => {
     useEffect( () => {
 
         ( async () => {
-            const url = 'http://localhost:5000/create-payment-intent';
+            const url = 'https://mighty-chamber-14802.herokuapp.com/create-payment-intent';
             const { data } = await myAxios.post(url, {totalPrice});
             if (data?.clientSecret){
                 setClientSecret(data.clientSecret);
@@ -85,7 +85,7 @@ const CheckoutForm = ({order}) => {
             };
 
             ( async () => {
-                const url = `http://localhost:5000/order/${_id}`;
+                const url = `https://mighty-chamber-14802.herokuapp.com/order/${_id}`;
                 const { data } = await myAxios.patch(url, payment);
             })();
     

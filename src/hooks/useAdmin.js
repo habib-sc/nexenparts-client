@@ -10,7 +10,7 @@ const useAdmin = (user) => {
 
         if (email) {
             ( async () => {
-                const url = `http://localhost:5000/admin/${email}`
+                const url = `https://mighty-chamber-14802.herokuapp.com/admin/${email}`
                 const { data } = await myAxios.get(url)
                 setAdmin(data.admin);
                 setAdminLoading(false);

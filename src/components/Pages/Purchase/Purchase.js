@@ -19,7 +19,7 @@ const Purchase = () => {
     const navigate = useNavigate();
     
     useEffect( () => {
-        const url = ` http://localhost:5000/parts/${id}`;
+        const url = ` https://mighty-chamber-14802.herokuapp.com/parts/${id}`;
         ( async () => {
             const { data } = await axios.get(url);
             setItem(data);
@@ -83,7 +83,7 @@ const Purchase = () => {
         setLoading(true);
 
         ( async () => {
-            const url = "http://localhost:5000/order";
+            const url = "https://mighty-chamber-14802.herokuapp.com/order";
             const { data } = await myAxios.post(url, order);
 
             if (data.insertedId) {
@@ -91,7 +91,7 @@ const Purchase = () => {
                 ( async () => {
                     const quantity = { quantity: restQty};
 
-                    const url = `http://localhost:5000/parts/update/${id}`;
+                    const url = `https://mighty-chamber-14802.herokuapp.com/parts/update/${id}`;
                     const { data } = await myAxios.patch(url, quantity);
 
                     console.log(data);

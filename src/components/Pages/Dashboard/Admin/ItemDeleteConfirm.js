@@ -6,7 +6,7 @@ const ItemDeleteConfirm = ({deleteItem, setDeleteItem, refetch}) => {
     const handleDeleteItem = () => {
 
         ( async () => {
-            const url = `http://localhost:5000/parts/delete/${deleteItem._id}`;
+            const url = `https://mighty-chamber-14802.herokuapp.com/parts/delete/${deleteItem._id}`;
             const { data } = await myAxios.delete(url);
             if(data) {
                 toast.success('Item Deleted Successfully.');

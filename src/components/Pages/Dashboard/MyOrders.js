@@ -15,7 +15,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        const url = `http://localhost:5000/orders?email=${user?.email}`;
+        const url = `https://mighty-chamber-14802.herokuapp.com/orders?email=${user?.email}`;
         ( async () => {
 
             try{

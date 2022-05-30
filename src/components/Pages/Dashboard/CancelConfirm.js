@@ -7,7 +7,7 @@ const CancelConfirm = ({cancelOrder, setCancelOrder, refetch}) => {
     const handleCancelOrder = () => {
 
         ( async () => {
-            const url = `http://localhost:5000/order/delete/${cancelOrder._id}`;
+            const url = `https://mighty-chamber-14802.herokuapp.com/order/delete/${cancelOrder._id}`;
             const { data } = await myAxios.delete(url);
             toast.success('Order has been cancelled');
             setCancelOrder(null);

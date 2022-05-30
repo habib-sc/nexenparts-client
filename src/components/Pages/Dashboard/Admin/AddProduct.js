@@ -37,7 +37,7 @@ const AddProduct = () => {
 
                 // Send Product info to database 
                 ( async () => {
-                    const { data } = await myAxios.post('http://localhost:5000/add-product', productData);
+                    const { data } = await myAxios.post('https://mighty-chamber-14802.herokuapp.com/add-product', productData);
 
                     if(data.insertedId){
                         toast.success('Product Added Successfully');
